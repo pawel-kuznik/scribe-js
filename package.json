@@ -2,7 +2,7 @@
   "name": "scribe-js",
   "version": "0.0.1",
   "description": "A library to parse RSS/ATOM feeds.",
-  "main": "index.js",
+  "main": "lib/scribe.js",
   "scripts": {
     "test": "mocha test"
   },
