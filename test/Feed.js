@@ -11,8 +11,20 @@ describe('Feed', function () {
     // test constructor
     describe('#constructor', function () {
 
-        // construct feed instance
-        let feed = new Feed();
+        // empty strings should throw errors
+        expect(function () {
+
+
+            // construct feed instance
+            let feed = new Feed();
+        }).to.throw(Error);
+
+        // feed data should not throw errors
+        expect(function () {
+
+            // construct feed instance
+            let feed = new Feed('<rss version="2.0"><channel></channel></rss>');
+        }).to.not.throw(Error);
     });
 
     // test load function
@@ -42,6 +54,28 @@ describe('Feed', function () {
 
                 // check if we are getting a Feed instance
                 expect(feed).to.be.an.instanceof(Feed);
+
+                // call done
+                done();
+            });
+        });
+
+        // next test case
+        if ("should download RSS feed and assign data", function (done) {
+
+            // make some timeout
+            this.timeout(500);
+
+            let result = Feed.load('http://localhost:7644/shoptalkshow.xml');
+
+            // are we done?
+            result.done(function (feed) {
+
+                // check properties that we know about
+                expect(feed).to.have.property('title', 'ShopTalk');
+                expect(feed).to.have.property('link', 'http://shoptalkshow.com');
+
+                // @todo add checking rest of properties? it's the same code
 
                 // call done
                 done();
