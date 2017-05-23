@@ -1,6 +1,6 @@
 {
   "name": "scribe-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library to parse RSS/ATOM feeds.",
   "main": "lib/scribe.js",
   "scripts": {
